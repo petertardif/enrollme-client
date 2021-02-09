@@ -1,5 +1,3 @@
 # Enroll Me
 
 This project was born out of need.
-
-## Available Scripts
