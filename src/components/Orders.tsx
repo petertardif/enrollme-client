@@ -1,11 +1,10 @@
-import React from 'react';
-import Link from '@material-ui/core/Link';
+import { Link } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
+import { Table } from '@material-ui/core';
+import { TableBody } from '@material-ui/core';
+import { TableCell } from '@material-ui/core';
+import { TableHead } from '@material-ui/core';
+import { TableRow } from '@material-ui/core';
 import Title from './Title';
 
 // Generate Order Data
@@ -76,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Orders() {
 	const classes = useStyles();
 	return (
-		<React.Fragment>
+		<>
 			<Title>Course Requests</Title>
 			<Table size='small'>
 				<TableHead>
@@ -105,6 +104,6 @@ export default function Orders() {
 					See more orders
 				</Link>
 			</div>
-		</React.Fragment>
+		</>
 	);
 }
