@@ -6,6 +6,7 @@ import { TableCell } from '@material-ui/core';
 import { TableHead } from '@material-ui/core';
 import { TableRow } from '@material-ui/core';
 import Title from './Title';
+import { useQuery, gql } from '@apollo/client';
 
 // Generate Order Data
 function createData(
@@ -18,6 +19,21 @@ function createData(
 ) {
 	return { id, date, name, shipTo, paymentMethod, amount };
 }
+
+const COURSE_REQUESTS = gql`
+	query GetCourses {
+		courses {
+			id
+			course_code
+			course_name
+			course_desc
+			course_level
+			college_credits
+			department
+			culturally_relevant
+		}
+	}
+`;
 
 const rows = [
 	createData(
@@ -72,15 +88,21 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function Orders() {
+export default function CourseRequestsList() {
 	const classes = useStyles();
+	const { loading, error, data } = useQuery(COURSE_REQUESTS);
+	console.log(data);
+
+	if (loading) return <p>Loading...</p>;
+	if (error) return <p>Error :(</p>;
+
 	return (
 		<>
 			<Title>Course Requests</Title>
 			<Table size='small'>
 				<TableHead>
 					<TableRow>
-						<TableCell>Date</TableCell>
+						<TableCell>Course Name</TableCell>
 						<TableCell>Name</TableCell>
 						<TableCell>Ship To</TableCell>
 						<TableCell>Payment Method</TableCell>
